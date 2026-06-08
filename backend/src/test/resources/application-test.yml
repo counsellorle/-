@@ -1,0 +1,46 @@
+spring:
+  application:
+    name: order-management-system
+
+  # 数据源配置
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/order_db_test?useUnicode=true&characterEncoding=utf8&useSSL=false&serverTimezone=Asia/Shanghai&allowPublicKeyRetrieval=true
+    username: root
+    password: root
+
+  # Flyway 配置（测试环境禁用）
+  flyway:
+    enabled: false
+
+  # Redis 配置
+  redis:
+    host: localhost
+    port: 6379
+    password: 
+    database: 1
+
+  # RabbitMQ 配置
+  rabbitmq:
+    host: localhost
+    port: 5672
+    username: guest
+    password: guest
+    virtual-host: /
+
+# 服务器配置
+server:
+  port: 8080
+
+# MyBatis-Plus 配置
+mybatis-plus:
+  mapper-locations: classpath*:/mapper/**/*.xml
+  type-aliases-package: com.example.order.entity
+  configuration:
+    map-underscore-to-camel-case: true
+
+# 日志配置
+logging:
+  level:
+    root: WARN
+    com.example.order: DEBUG

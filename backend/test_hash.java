@@ -1,0 +1,1 @@
+import cn.hutool.crypto.digest.BCrypt; System.out.println(BCrypt.hashpw("password123"));

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.order.repository.OrderMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.example.order.entity.Order">
+        <id column="id" property="id"/>
+        <result column="order_no" property="orderNo"/>
+        <result column="user_id" property="userId"/>
+        <result column="total_amount" property="totalAmount"/>
+        <result column="order_status" property="orderStatus"/>
+        <result column="payment_status" property="paymentStatus"/>
+        <result column="payment_method" property="paymentMethod"/>
+        <result column="receiver_address" property="receiverAddress"/>
+        <result column="remark" property="remark"/>
+        <result column="expected_finish_time" property="expectedFinishTime"/>
+        <result column="logistics_no" property="logisticsNo"/>
+        <result column="cancel_reason" property="cancelReason"/>
+        <result column="paid_at" property="paidAt"/>
+        <result column="created_at" property="createdAt"/>
+        <result column="updated_at" property="updatedAt"/>
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        id, order_no, user_id, total_amount, order_status, payment_status, payment_method,
+        receiver_address, remark, expected_finish_time, logistics_no, cancel_reason,
+        paid_at, created_at, updated_at
+    </sql>
+
+</mapper>

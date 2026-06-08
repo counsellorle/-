@@ -1,0 +1,36 @@
+spring:
+  application:
+    name: order-management-system
+
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://prod-db-host:3306/order_db?useUnicode=true&characterEncoding=utf8&useSSL=true&serverTimezone=Asia/Shanghai
+    username: ${DB_USERNAME:order_admin}
+    password: ${DB_PASSWORD:changeit}
+
+  redis:
+    host: ${REDIS_HOST:prod-redis-host}
+    port: 6379
+    password: ${REDIS_PASSWORD:changeit}
+
+  rabbitmq:
+    host: ${RABBITMQ_HOST:prod-rabbitmq-host}
+    username: ${RABBITMQ_USERNAME:order_admin}
+    password: ${RABBITMQ_PASSWORD:changeit}
+
+server:
+  port: 8080
+  servlet:
+    context-path: /api
+
+mybatis-plus:
+  mapper-locations: classpath*:/mapper/**/*.xml
+  type-aliases-package: com.example.order.entity
+  configuration:
+    map-underscore-to-camel-case: true
+    log-impl: org.apache.ibatis.logging.slf4j.Slf4jImpl
+
+logging:
+  level:
+    root: WARN
+    com.example.order: INFO
