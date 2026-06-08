@@ -164,28 +164,63 @@ onMounted(() => {
 <style scoped lang="scss">
 .order-detail-container {
   min-height: 100vh;
+  background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
 }
 
 .page-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color: #fff;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  padding: 20px 40px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
   
   h2 {
     margin: 0;
-    color: #333;
+    color: #fff;
+    font-size: 24px;
+    font-weight: 600;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
   }
   
   .header-actions {
     display: flex;
-    gap: 10px;
+    gap: 12px;
+    
+    .el-button {
+      background: rgba(255, 255, 255, 0.2);
+      border: 1px solid rgba(255, 255, 255, 0.4);
+      color: #fff;
+      
+      &:hover {
+        background: rgba(255, 255, 255, 0.3);
+        transform: translateY(-1px);
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+      }
+    }
   }
 }
 
 .el-main {
-  padding: 20px;
+  padding: 30px 40px;
+}
+
+:deep(.el-card) {
+  margin-bottom: 20px;
+  border-radius: 12px;
+  border: none;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  
+  &:hover {
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.12);
+    transition: all 0.3s ease;
+  }
+}
+
+:deep(.el-card__header) {
+  background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+  padding: 18px 24px;
+  border-bottom: 2px solid #e0e0e0;
 }
 
 .card-header {
@@ -194,12 +229,82 @@ onMounted(() => {
   align-items: center;
 }
 
+.detail-item {
+  display: flex;
+  justify-content: space-between;
+  padding: 14px 0;
+  border-bottom: 1px solid #f0f0f0;
+  
+  &:last-child {
+    border-bottom: none;
+  }
+  
+  .label {
+    color: #666;
+    font-size: 14px;
+    font-weight: 500;
+  }
+  
+  .value {
+    color: #333;
+    font-size: 14px;
+    font-weight: 600;
+  }
+}
+
 .action-buttons {
-  margin-top: 20px;
+  margin-top: 25px;
   text-align: center;
+  padding: 20px 0;
   
   button {
     margin: 0 10px;
+    min-width: 120px;
+    height: 42px;
+    font-size: 15px;
+    font-weight: 500;
+    
+    &.pay-btn {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      border: none;
+      
+      &:hover {
+        opacity: 0.9;
+        transform: translateY(-2px);
+        box-shadow: 0 6px 16px rgba(102, 126, 234, 0.4);
+      }
+    }
+    
+    &.cancel-btn {
+      background: linear-gradient(135deg, #ff6b6b 0%, #ee5a6f 100%);
+      border: none;
+      color: #fff;
+      
+      &:hover {
+        opacity: 0.9;
+        transform: translateY(-2px);
+        box-shadow: 0 6px 16px rgba(255, 107, 107, 0.4);
+      }
+    }
+  }
+}
+
+:deep(.el-tag) {
+  padding: 6px 12px;
+  border-radius: 6px;
+  font-weight: 500;
+  font-size: 13px;
+}
+
+:deep(.el-descriptions) {
+  .el-descriptions__label {
+    font-weight: 500;
+    color: #666;
+  }
+  
+  .el-descriptions__content {
+    font-weight: 600;
+    color: #333;
   }
 }
 </style>

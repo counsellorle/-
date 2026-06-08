@@ -90,18 +90,52 @@ const handleLogin = async () => {
   align-items: center;
   height: 100vh;
   background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  position: relative;
+  overflow: hidden;
+  
+  &::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
+    animation: rotate 30s linear infinite;
+  }
+}
+
+@keyframes rotate {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
 }
 
 .login-card {
-  width: 400px;
-  padding: 20px;
+  width: 450px;
+  padding: 40px;
+  border-radius: 20px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(10px);
+  position: relative;
+  z-index: 1;
+  
+  &:hover {
+    box-shadow: 0 25px 70px rgba(0, 0, 0, 0.35);
+    transform: translateY(-2px);
+    transition: all 0.3s ease;
+  }
 }
 
 .login-title {
   text-align: center;
-  color: #333;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
   margin-bottom: 10px;
-  font-size: 24px;
+  font-size: 28px;
+  font-weight: 600;
 }
 
 .login-subtitle {
@@ -113,21 +147,49 @@ const handleLogin = async () => {
 
 .login-btn {
   width: 100%;
+  height: 45px;
+  font-size: 16px;
+  font-weight: 500;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  border: none;
+  border-radius: 10px;
+  
+  &:hover {
+    opacity: 0.9;
+    transform: translateY(-1px);
+    box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+  }
 }
 
 .login-footer {
   text-align: center;
   margin-top: 20px;
   color: #666;
+  font-size: 14px;
   
   a {
-    color: $primary-color;
+    color: #667eea;
     text-decoration: none;
     margin-left: 5px;
+    font-weight: 500;
     
     &:hover {
       text-decoration: underline;
     }
+  }
+}
+
+:deep(.el-form-item__label) {
+  font-weight: 500;
+  color: #333;
+}
+
+:deep(.el-input__wrapper) {
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+  
+  &:hover {
+    box-shadow: 0 2px 12px rgba(102, 126, 234, 0.3);
   }
 }
 </style>
