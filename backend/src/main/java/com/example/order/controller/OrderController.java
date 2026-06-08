@@ -4,6 +4,7 @@ import com.example.order.common.Result;
 import com.example.order.dto.CancelOrderRequest;
 import com.example.order.dto.CreateOrderRequest;
 import com.example.order.dto.ModifyOrderRequest;
+import com.example.order.usecase.CancelOrderUseCase;
 import com.example.order.usecase.CreateOrderUseCase;
 import com.example.order.usecase.QueryOrderUseCase;
 import com.example.order.vo.OrderCreateVO;
@@ -28,6 +29,9 @@ public class OrderController {
 
     @Autowired
     private QueryOrderUseCase queryOrderUseCase;
+
+    @Autowired
+    private CancelOrderUseCase cancelOrderUseCase;
 
     /**
      * 创建订单接口
@@ -95,7 +99,10 @@ public class OrderController {
      */
     @PutMapping("/{orderNo}/cancel")
     public Result<Void> cancelOrder(@PathVariable String orderNo, @Valid @RequestBody CancelOrderRequest request) {
-        // TODO: 实现取消订单逻辑
+        // TODO: 实际应从登录态获取 userId
+        Long userId = 1L;
+        
+        cancelOrderUseCase.cancelOrder(orderNo, userId, request.getReason());
         return Result.success();
     }
 

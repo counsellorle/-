@@ -1,8 +1,10 @@
 package com.example.order.controller;
 
 import com.example.order.common.Result;
+import com.example.order.dto.AdvanceOrderRequest;
 import com.example.order.dto.ConfirmOrderRequest;
 import com.example.order.dto.ShipOrderRequest;
+import com.example.order.usecase.OrderStatusAdvanceUseCase;
 import com.example.order.usecase.QueryOrderUseCase;
 import com.example.order.vo.OrderVO;
 import jakarta.validation.Valid;
@@ -25,6 +27,9 @@ public class AdminOrderController {
 
     @Autowired
     private QueryOrderUseCase queryOrderUseCase;
+
+    @Autowired
+    private OrderStatusAdvanceUseCase orderStatusAdvanceUseCase;
 
     /**
      * 商家订单列表接口
@@ -59,7 +64,7 @@ public class AdminOrderController {
      */
     @PutMapping("/{orderNo}/confirm")
     public Result<Void> confirmOrder(@PathVariable String orderNo, @Valid @RequestBody ConfirmOrderRequest request) {
-        // TODO: 实现确认订单逻辑
+        orderStatusAdvanceUseCase.confirmOrder(orderNo, request.getExpectedFinishTime());
         return Result.success();
     }
 
@@ -71,7 +76,7 @@ public class AdminOrderController {
      */
     @PutMapping("/{orderNo}/produce")
     public Result<Void> produceOrder(@PathVariable String orderNo) {
-        // TODO: 实现推进订单逻辑
+        orderStatusAdvanceUseCase.startProduction(orderNo);
         return Result.success();
     }
 
@@ -84,7 +89,7 @@ public class AdminOrderController {
      */
     @PutMapping("/{orderNo}/ship")
     public Result<Void> shipOrder(@PathVariable String orderNo, @Valid @RequestBody ShipOrderRequest request) {
-        // TODO: 实现发货逻辑
+        orderStatusAdvanceUseCase.shipOrder(orderNo, request.getLogisticsNo());
         return Result.success();
     }
 
@@ -96,7 +101,7 @@ public class AdminOrderController {
      */
     @PutMapping("/{orderNo}/complete")
     public Result<Void> completeOrder(@PathVariable String orderNo) {
-        // TODO: 实现完成订单逻辑
+        orderStatusAdvanceUseCase.completeOrder(orderNo);
         return Result.success();
     }
 }

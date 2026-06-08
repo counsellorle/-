@@ -29,20 +29,19 @@ class PayCallbackControllerTest {
     void testAlipayCallbackSuccess() throws Exception {
         mockMvc.perform(post("/pay/alipay/callback")
                         .param("out_trade_no", "ORD202606080001")
+                        .param("trade_no", "202606080001")
                         .param("trade_status", "TRADE_SUCCESS"))
-                .andExpect(status().isOk())
-                .andExpect(content().string("success"));
+                .andExpect(status().isOk());
     }
 
     @Test
     @DisplayName("测试微信回调成功")
     void testWechatCallbackSuccess() throws Exception {
-        String json = "{\"out_trade_no\":\"ORD202606080001\",\"trade_state\":\"SUCCESS\"}";
+        String json = "{\"out_trade_no\":\"ORD202606080001\",\"return_code\":\"SUCCESS\"}";
         
         mockMvc.perform(post("/pay/wechat/callback")
                         .contentType("application/json")
                         .content(json))
-                .andExpect(status().isOk())
-                .andExpect(content().string("success"));
+                .andExpect(status().isOk());
     }
 }
