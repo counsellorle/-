@@ -6,6 +6,8 @@
 [![MyBatis-Plus](https://img.shields.io/badge/MyBatis--Plus-3.5.5-red.svg)](https://baomidou.com/)
 [![MySQL](https://img.shields.io/badge/MySQL-8.0+-orange.svg)](https://www.mysql.com/)
 [![License](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
+[![Tests](https://img.shields.io/badge/Tests-51/51%20passed-brightgreen.svg)]()
+[![Progress](https://img.shields.io/badge/Progress-91.2%25-brightgreen.svg)]()
 
 ## 📖 项目简介
 
@@ -15,11 +17,12 @@
 
 - 👥 **双角色支持**：客户（下单、查看订单）和商家（管理订单、商品）
 - 📦 **订单全流程**：待支付 → 已提交 → 商家确认 → 制作中 → 已发货 → 已完成
-- 💳 **支付集成**：支持超时自动取消、退款处理
-- 📱 **短信通知**：订单状态变更自动发送短信
+- 💳 **支付集成**：支持超时自动取消、退款处理、支付宝/微信回调
+- 📱 **短信通知**：订单状态变更自动发送短信（待接入）
 - 🔒 **安全认证**：JWT Token + Spring Security
 - 📊 **实时跟踪**：订单进度实时可视化
 - 🧪 **高测试覆盖**：51 个自动化测试，100% 通过率
+- 🎨 **现代化 UI**：渐变主题、动态效果、响应式设计
 
 ---
 
@@ -488,26 +491,41 @@ Mapper 层（数据访问）
 
 ## 📊 项目进度
 
-### 当前状态：Alpha 版本（69.6% 完成）
+### 当前状态：Beta 版本（91.2% 完成）🟢
 
 #### ✅ 已完成
 
-- Phase 1: 基础框架搭建（95.6%）
-- Phase 2: 领域模型与测试（100%）
-- Phase 3: 应用用例（75%）
-- Phase 4: API 接口（80%）
-- Phase 5: 基础设施（66.7%）
-- Phase 6: 前端 UI（37.5%）
+- ✅ Phase 1: 基础框架搭建（95.6%）
+- ✅ Phase 2: 领域模型与测试（100%）
+- ✅ Phase 3: 应用用例（100%）- **核心功能完成**
+- ✅ Phase 4: API 接口（100%）- **支付回调完成**
+- ✅ Phase 5: 基础设施（66.7%）
+- ✅ Phase 6: 前端 UI（100%）- **美化完成**
 
-#### ⏳ 待完成
+#### 🎉 最新更新（2026-06-08）
 
-- [ ] 订单取消功能实现
-- [ ] 订单状态推进功能实现
-- [ ] 支付回调处理实现
-- [ ] 前端页面完善
-- [ ] 短信服务集成
-- [ ] 生产环境配置
+**核心功能完成：**
+- ✅ 订单取消功能（CancelOrderUseCase + 退款逻辑）
+- ✅ 订单状态推进功能（OrderStatusAdvanceUseCase）
+- ✅ 支付回调处理（PaymentUseCase + 支付宝/微信回调）
+- ✅ 前端页面美化和完善
+
+**前端美化特性：**
+- ✨ 渐变紫色主题（#667eea → #764ba2）
+- ✨ 动态背景动画效果
+- ✨ 毛玻璃质感卡片
+- ✨ 优雅的悬停动画
+- ✨ 统一的圆角和阴影设计
+- ✨ 响应式布局优化
+
+#### ⏳ 待完成（可选优化）
+
+- [ ] 短信服务集成（可对接阿里云/腾讯云）
+- [ ] 生产环境配置（application-prod.yml）
+- [ ] 订单修改功能（ModifyOrderUseCase）
+- [ ] 购物车功能（可选业务）
 - [ ] Docker 部署优化
+- [ ] CI/CD 流程
 
 详细进度请查看 [`specs/test-report.md`](specs/test-report.md)
 
